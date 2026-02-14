@@ -1,0 +1,87 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --color-primary-50: #f5f3ff;
+    --color-primary-100: #ede9fe;
+    --color-primary-200: #ddd6fe;
+    --color-primary-300: #c4b5fd;
+    --color-primary-400: #a78bfa;
+    --color-primary-500: #8b5cf6;
+    --color-primary-600: #7c3aed;
+    --color-primary-700: #6d28d9;
+    --color-primary-800: #5b21b6;
+    --color-primary-900: #4c1d95;
+
+    /* ChatGPT Color Palette - Tailwind v4 automatically maps --color-x to bg-x, text-x, etc. */
+    --color-gpt-sidebar: #171717;
+    --color-gpt-main-dark: #212121;
+    --color-gpt-main-light: #ffffff;
+    --color-gpt-input-dark: #2f2f2f;
+    --color-gpt-input-light: #ffffff;
+    --color-gpt-ai-bg-light: #f7f7f8;
+
+    /* Additional neutral colors for better light mode visibility */
+    --color-neutral-800: #1a1a1a;
+    --color-neutral-900: #0d0d0d;
+}
+
+/* Global Transitions */
+* {
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Ensure the dark class on root applies background everywhere */
+:root.dark {
+    background-color: var(--color-gpt-main-dark);
+}
+
+:root {
+    background-color: var(--color-gpt-main-light);
+}
+
+@layer components {
+
+    /* Scrollbar Customization */
+    .scrollbar-custom::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .scrollbar-custom::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .scrollbar-custom::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .dark .scrollbar-custom::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+    }
+}
+
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
